@@ -1,11 +1,11 @@
-FROM node:8.9-alpine
+FROM node:latest
+LABEL Name="Node demo app for Azure" Version=1.0.0 
 
-ENV NODE_ENV production
+COPY package.json /tmp/package.json
+RUN cd /tmp && npm install --production
+RUN mkdir -p /usr/src/app && mv /tmp/node_modules /usr/src
 WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
-COPY . .
+COPY . /usr/src/app
 
 EXPOSE 3000
-
 CMD npm start
