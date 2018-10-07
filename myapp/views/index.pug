@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 
+    img(src='https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg')
+    span Node.js - Demo Web App
+  h2 &#x1F4BB; System Info...
+       
+  if isDocker
+    h3 &#x1F4E6; Status: Running in a Docker container! &#x1F604; 
+  else
+    h3 &#x1F4E6; Status: Not running as a Docker container &#x1F622;
+  h2 Microsoft &hearts; Open source
+  hr
